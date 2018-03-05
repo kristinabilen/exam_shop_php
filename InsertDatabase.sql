@@ -1,17 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Feb 23, 2018 at 08:20 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Хост: localhost:8889
+-- Время создания: Мар 05 2018 г., 20:54
+-- Версия сервера: 5.6.35
+-- Версия PHP: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `shop`
+-- База данных: `shop`
 --
 CREATE DATABASE IF NOT EXISTS `shop` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `shop`;
@@ -19,37 +19,36 @@ USE `shop`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Структура таблицы `category`
 --
 
 DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `sort_order` int(11) NOT NULL DEFAULT '0',
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category`
+-- Дамп данных таблицы `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `sort_order`, `status`) VALUES
 (13, 'Ноутбуки', 1, 1),
-(14, 'Планшеты', 2, 1),
-(15, 'Мониторы', 3, 1),
-(16, 'Игровые компьютеры', 4, 1);
+(14, 'Планшети', 2, 1),
+(15, 'Монітори', 3, 1),
+(16, 'Игрові компьютери', 4, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Структура таблицы `product`
 --
 
 DROP TABLE IF EXISTS `product`;
-CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `category_id` int(11) NOT NULL,
   `code` int(11) NOT NULL,
@@ -59,18 +58,17 @@ CREATE TABLE IF NOT EXISTS `product` (
   `description` text NOT NULL,
   `is_new` int(11) NOT NULL DEFAULT '0',
   `is_recommended` int(11) NOT NULL DEFAULT '0',
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product`
+-- Дамп данных таблицы `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availability`, `brand`, `description`, `is_new`, `is_recommended`, `status`) VALUES
-(34, 'Ноутбук Asus X200MA (X200MA-KX315D)', 13, 1839707, 395, 1, 'Asus', 'Экран 11.6\" (1366x768) HD LED, глянцевый / Intel Pentium N3530 (2.16 - 2.58 ГГц) / RAM 4 ГБ / HDD 750 ГБ / Intel HD Graphics / без ОД / Bluetooth 4.0 / Wi-Fi / LAN / веб-камера / без ОС / 1.24 кг / синий', 0, 0, 1),
-(35, 'Ноутбук HP Stream 11-d050nr', 13, 2343847, 305, 0, 'Hewlett Packard', 'Экран 11.6” (1366x768) HD LED, матовый / Intel Celeron N2840 (2.16 ГГц) / RAM 2 ГБ / eMMC 32 ГБ / Intel HD Graphics / без ОД / Wi-Fi / Bluetooth / веб-камера / Windows 8.1 + MS Office 365 / 1.28 кг / синий', 1, 1, 1),
-(36, 'Ноутбук Asus X200MA White ', 13, 2028027, 270, 1, 'Asus', 'Экран 11.6\" (1366x768) HD LED, глянцевый / Intel Celeron N2840 (2.16 ГГц) / RAM 2 ГБ / HDD 500 ГБ / Intel HD Graphics / без ОД / Bluetooth 4.0 / Wi-Fi / LAN / веб-камера / без ОС / 1.24 кг / белый', 0, 1, 1),
+(34, 'Ноутбук Apple A1708 MacBook Pro Retina 13\" (MPXR2UA/A) Silver\r\n', 13, 1839707, 395, 1, 'MacBook Pro', 'Экран 13.3\" IPS (2560x1600) Retina, глянцевый / Intel Core i5 (2.3 - 3.6 ГГц) / RAM 8 ГБ / SSD 128 ГБ / Intel Iris Plus Graphics 640 / без ОД / Wi-Fi / Bluetooth / веб-камера / macOS Sierra / 1.37 кг / серебристый\r\nПодробнее: https://rozetka.com.ua/apple_mpxr2ua_a/p17935260/', 0, 0, 1),
+(35, '\r\nНоутбук Apple A1706 MacBook Pro TB Retina 13\" (Z0UN000AS) Space Gray ', 13, 2343847, 305, 0, 'MacBook Pro TB ', 'Экран 13.3\" IPS (2560x1600) Retina, глянцевый / Intel Core i7 (3.5 - 4.0 ГГц) / RAM 16 ГБ / SSD 1 ТБ / Intel Iris Plus Graphics 650 / без ОД / Wi-Fi / Bluetooth / веб-камера / macOS Sierra / 1.37 кг / космический серый\r\n', 1, 1, 1),
+(36, 'Ноутбук Apple MacBook A1534 12\" Silver (MNYH2UA/A) \r\n', 13, 2028027, 270, 1, 'MacBook', 'Экран 12\" IPS Retina (2304x1440) LED, глянцевый / Intel Core M3 (1.2 - 3.0 ГГц) / RAM 8 ГБ / SSD 256 ГБ / Intel HD Graphics 615 / без ОД / Wi-Fi 802.11ac / Bluetooth 4.2 / веб-камера / macOS Sierra / 0.92 кг / серебристый\r\n', 0, 1, 1),
 (37, 'Ноутбук Acer Aspire E3-112-C65X', 13, 2019487, 325, 1, 'Acer', 'Экран 11.6\'\' (1366x768) HD LED, матовый / Intel Celeron N2840 (2.16 ГГц) / RAM 2 ГБ / HDD 500 ГБ / Intel HD Graphics / без ОД / LAN / Wi-Fi / Bluetooth / веб-камера / Linpus / 1.29 кг / серебристый', 0, 1, 1),
 (38, 'Ноутбук Acer TravelMate TMB115', 13, 1953212, 275, 1, 'Acer', 'Экран 11.6\'\' (1366x768) HD LED, матовый / Intel Celeron N2840 (2.16 ГГц) / RAM 2 ГБ / HDD 500 ГБ / Intel HD Graphics / без ОД / LAN / Wi-Fi / Bluetooth 4.0 / веб-камера / Linpus / 1.32 кг / черный', 0, 0, 1),
 (39, 'Ноутбук Lenovo Flex 10', 13, 1602042, 370, 0, 'Lenovo', 'Экран 10.1\" (1366x768) HD LED, сенсорный, глянцевый / Intel Celeron N2830 (2.16 ГГц) / RAM 2 ГБ / HDD 500 ГБ / Intel HD Graphics / без ОД / Wi-Fi / Bluetooth / веб-камера / Windows 8.1 / 1.2 кг / черный', 0, 0, 1),
@@ -84,51 +82,103 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availabili
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_order`
+-- Структура таблицы `product_order`
 --
 
 DROP TABLE IF EXISTS `product_order`;
-CREATE TABLE IF NOT EXISTS `product_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_order` (
+  `id` int(11) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `user_phone` varchar(255) NOT NULL,
   `user_comment` text NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `products` text NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product_order`
+-- Дамп данных таблицы `product_order`
 --
 
 INSERT INTO `product_order` (`id`, `user_name`, `user_phone`, `user_comment`, `user_id`, `date`, `products`, `status`) VALUES
 (45, 'fsdfsd', '1', '123123123', 4, '2015-05-14 09:54:45', '{\"1\":1,\"2\":1,\"3\":2}', 3),
-(46, 'САША1', 'g3424242342', '', 4, '2015-05-18 15:34:42', '{\"44\":3,\"43\":3}', 1);
+(46, 'САША1', 'g3424242342', '', 4, '2015-05-18 15:34:42', '{\"44\":3,\"43\":3}', 1),
+(47, 'kristina', '+80978676456', 'hello', 0, '2018-02-26 20:41:20', '{\"45\":1,\"44\":1}', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Структура таблицы `user`
 --
 
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `role` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Дамп данных таблицы `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`) VALUES
 (3, 'Александр', 'alex@mail.com', '111111', ''),
-(4, 'Бодя царь', 'jaminski.ua@gmail.com', '222222', 'admin'),
+(4, 'Богдан', 'jaminski.ua@gmail.com', '222222', 'admin'),
 (5, 'Сергей', 'serg@mail.com', '111111', '');
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `product_order`
+--
+ALTER TABLE `product_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT для таблицы `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+--
+-- AUTO_INCREMENT для таблицы `product_order`
+--
+ALTER TABLE `product_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+--
+-- AUTO_INCREMENT для таблицы `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
